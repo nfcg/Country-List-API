@@ -21,7 +21,7 @@ Clone the contents of the repository into your server directory.
 # Configuration
 
 Edit paramteres in the countries.php file.
-- Database Location
+- The database location
 - IP Access: allow, deny or disabled (ips list in database)
 
 
