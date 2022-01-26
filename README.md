@@ -36,6 +36,6 @@ All fields can be excluded using "hide" (eg. calling_code=hide continent_code=hi
 # Examples
 
 - Using DataTables and Bootstrap-Select examples in the examples.html file.
-- https://example.org/countries.php?language=pt
-- https://example.org/countries.php?continent=eu
-- https://example.org/countries.php?currency_code=hide0&cc_tld=hide&capital_en=hide&continent_name_en=hide&continent_code=hide&currency_name_en=hide&continent
+- `https://example.com/countries.php?language=pt`
+- `https://example.com/countries.php?continent=eu`
+- `https://example.com/countries.php?currency_code=hide0&cc_tld=hide&capital_en=hide&continent_name_en=hide&continent_code=hide&currency_name_en=hide&continent`
