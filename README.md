@@ -17,6 +17,19 @@ A JSON API to retrieve countries list.
 
 Clone the contents of the repository into your server directory.
 
+Apache server setings.
+```
+<Directory /Your-API-Folder>
+   Header set Access-Control-Allow-Origin "*"
+</Directory>
+```
+
+Nginx server setings.
+```
+location /Your-API-Folder) {		
+   add_header 'Access-Control-Allow-Origin' '*';
+}
+```
 
 # Configuration
 
