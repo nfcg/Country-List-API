@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
+  
+ <script>
+	$(document).ready(function() {
+		$.getJSON("https://example.com/test/countries.php?calling_code=hide&currency_code=hide&cc_tld=hide&continent_name_en=hide&continent_code=hide&currency_name_en=hide&flag=24", function(data) {
+
+			$.each(data, function(index, value) {
+				var option = '<option data-content="<img src=' + "'" + value.flags_24_24 + "'><span> " + value.name_en + "</span><small class='text-muted'> Capital: " + value.capital_en + "</small>" + '" value="' + value.ISO_3166_1_alpha_2 + '"</option>'
+				$('#select_countries').append(option);
+			});
+			$("#select_countries").selectpicker("refresh");
+		});
+
+		$('#datatables_countries').DataTable({
+			"ajax": {
+				"url": "https://example.com/countries.php?flag=32",
+				"dataSrc": ""
+			},
+             "columns": [{"data": "flags_32_32", render: function(data, type, row) {return '<div style="height: 32px; width: 32px; background-image: url(' + data + '); background-repeat: no-repeat, repeat;"></div>';}},
+				{"data": "name_en"},
+                {"data": "capital_en", render: function(data, type, row) {if(data == 'NULL') return '<p style="text-decoration: line-through;">not available</p>'; else return data ;}},
+				{"data": "continent_name_en"},
+				{"data": "ISO_3166_1_alpha_2"},
+                {"data": "calling_code", render: function(data, type, row) {if(data == 'NULL') return '<p style="text-decoration: line-through;">not available</p>'; else return '+' + data ;}},
+                {"data": "currency_code", render: function(data, type, row) {if(data == 'NULL') return '<p style="text-decoration: line-through;">not available</p>'; else return data ;}},
+                {"data": "currency_name_en", render: function(data, type, row) {if(data == 'NULL') return '<p style="text-decoration: line-through;">not available</p>'; else return data ;}},
+                {"data": "cc_tld", render: function(data, type, row) {if(data == 'NULL') return '<p style="text-decoration: line-through;">not available</p>'; else return data ;}},
+			]
+		});
+
+	});
+ </script>
+  
+  </head>
+  <body>
+    <div class="container mx-auto p-5">
+    <h2 class="p-2">Bootstrap-Select Example</h2>
+      <div class="form-group">
+        <div class="col-xs-2">
+          <select id="select_countries" class="btn-primary form-control btn-block form-select form-select-lg selectpicker show-tick" data-size="15" data-style="btn-primary" data-live-search="true" title="Please Choose Country..." style="width:auto;">
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto p-5">
+    <h2 class="p-2">Datatables Example</h2>
+      <table id="datatables_countries" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Flag</th>
+            <th>Country</th>
+            <th>Capital</th>
+            <th>Continent</th>
+            <th>ISO-3166-1 Alpha-2</th>
+            <th>Calling Code</th>
+            <th>Currency Code</th>
+            <th>Currency Name</th>
+            <th>ccTLD</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+  </body>
+</html>
