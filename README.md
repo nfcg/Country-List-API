@@ -17,14 +17,14 @@ A JSON API to retrieve countries list.
 
 Clone the contents of the repository into your server directory.
 
-Apache server setings.
+- Apache server setings.
 ```
 <Directory /Your-API-Folder>
    Header set Access-Control-Allow-Origin "*"
 </Directory>
 ```
 
-Nginx server setings.
+- Nginx server setings.
 ```
 location /Your-API-Folder) {		
    add_header 'Access-Control-Allow-Origin' '*';
@@ -33,7 +33,7 @@ location /Your-API-Folder) {
 
 # Configuration
 
-Edit paramteres in the countries.php file.
+Edit the countries.php file.
 - The database location
 - IP Access: allow, deny or disabled (ips list in database)
 
