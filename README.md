@@ -41,7 +41,7 @@ Edit paramteres in the countries.php file.
 # Options
 
 - continent: AF, AN, AS, EU, NA, OC, SA (default all Continents)
-- flag: 16, 24, 32, 48, 64, 128 (default all Continents)
+- flag: 16, 24, 32, 48, 64, 128 (default size 16x16)
 - language: pt (default English)
 - iso: alpha_2, alpha_3, numeric (default alpha_2)
 All fields can be excluded using "hide" (eg. calling_code=hide continent_code=hide)
