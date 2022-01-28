@@ -80,6 +80,19 @@ function getUserIpAddr()
     return $ip;
 }
 
+function arrayToXML($array, SimpleXMLElement $xml, $child_name)
+{
+    foreach ($array as $k => $v) {
+        if(is_array($v)) {
+            (is_int($k)) ? arrayToXML($v, $xml->addChild($child_name), $v) : $this->arrayToXML($v, $xml->addChild(strtolower($k)), $child_name);
+        } else {
+            (is_int($k)) ? $xml->addChild($child_name, $v) : $xml->addChild(strtolower($k), $v);
+        }
+    }
+
+    return $xml->asXML();
+}
+
 $allow = ["_", "language", "flag", "continent", "ISO_3166_1_alpha_2", "ISO_3166_1_alpha_3", "ISO_3166_1_numeric", "name_pt", "name_en", "capital_pt", "capital_en", "calling_code", "currency_name_en", "currency_code", "cc_tld", "continent_code", "continent_name_pt", "continent_name_en", "flags_16_16", "flags_24_24", "flags_32_32", "flags_48_48", "flags_64_64", "flags_128_128"];
 
 $check = [];
@@ -184,5 +197,10 @@ if (isset($_REQUEST["continent"])) {
 header("Content-Type: application/json; charset=utf-8");
 //echo json_encode(["countries" => $countries], JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
 echo json_encode($countries, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+
+/* uncomment this to return xml
+ header("Content-Type: application/xml; charset=utf-8");
+echo arrayToXML($countries, new SimpleXMLElement('<countries/>'), 'country');
+*/
 
 ?>
