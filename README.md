@@ -1,5 +1,5 @@
 # Description
-A JSON API to retrieve countries list.
+A API to retrieve countries list.
 
 
 ## Country fields available:
