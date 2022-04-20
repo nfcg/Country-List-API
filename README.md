@@ -49,7 +49,8 @@ All fields can be excluded using "hide" (eg. calling_code=hide continent_code=hi
 
 # Examples
 
-- Using DataTables and Bootstrap-Select examples in the examples.html file.
-- `https://example.com/countries.php?language=pt`
-- `https://example.com/countries.php?continent=eu`
-- `https://example.com/countries.php?currency_code=hide0&cc_tld=hide&capital_en=hide&continent_name_en=hide&continent_code=hide&currency_name_en=hide&continent`
+ Examples using DataTables and Bootstrap-Select in the examples.html file.
+-  https://nunofcguerreiro.com/examples.html
+-  https://nunofcguerreiro.com/countries.php?language=pt
+-  https://nunofcguerreiro.com/countries.php?continent=eu
+-  https://nunofcguerreiro.com/countries.php?currency_code=hide0&cc_tld=hide&capital_en=hide&continent_name_en=hide&continent_code=hide&currency_name_en=hide&continent
